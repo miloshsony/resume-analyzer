@@ -99,7 +99,7 @@ const Register = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="block w-full rounded-lg border border-slate-800 bg-slate-900/60 py-3 pl-10 pr-3 text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:bg-slate-900 focus:ring-1 focus:ring-blue-500 text-sm focus:outline-none"
-                placeholder="John Doe"
+                placeholder="Enter your name"
               />
             </div>
           </div>
@@ -122,7 +122,7 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="block w-full rounded-lg border border-slate-800 bg-slate-900/60 py-3 pl-10 pr-3 text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:bg-slate-900 focus:ring-1 focus:ring-blue-500 text-sm focus:outline-none"
-                placeholder="john@example.com"
+                placeholder="Enter your Email"
               />
             </div>
           </div>
