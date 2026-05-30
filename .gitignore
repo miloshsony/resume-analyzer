@@ -1,0 +1,26 @@
+# Dependencies
+**/node_modules/
+**/dist/
+**/build/
+
+# Configurations & Environment variables (Critical for security)
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Multer uploads directory
+**/server/uploads/*
+!**/server/uploads/.gitkeep
+
+# IDEs & System files
+**/.vscode/
+**/.idea/
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+.DS_Store
+Thumbs.db
