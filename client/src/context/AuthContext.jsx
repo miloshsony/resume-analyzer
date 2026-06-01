@@ -12,11 +12,11 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState(null);
 
-  // Initialize and check localStorage for existing session
+  // Initialize and check sessionStorage for existing session
   useEffect(() => {
     const initializeAuth = () => {
-      const storedToken = localStorage.getItem('token');
-      const storedUser = localStorage.getItem('user');
+      const storedToken = sessionStorage.getItem('token');
+      const storedUser = sessionStorage.getItem('user');
 
       if (storedToken && storedUser) {
         try {
@@ -27,8 +27,8 @@ export const AuthProvider = ({ children }) => {
           console.log('Session restored for:', parsedUser.email);
         } catch (e) {
           console.error('Failed to parse stored user session data:', e);
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('user');
         }
       }
       setLoading(false);
@@ -49,8 +49,8 @@ export const AuthProvider = ({ children }) => {
       const { token, user: newUser } = response.data;
 
       // Save credentials in client storage
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(newUser));
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('user', JSON.stringify(newUser));
 
       // Hook token into standard axios calls
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -76,8 +76,8 @@ export const AuthProvider = ({ children }) => {
       const { token, user: loggedUser } = response.data;
 
       // Save credentials
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(loggedUser));
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('user', JSON.stringify(loggedUser));
 
       // Hook token into axios headers
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -96,8 +96,8 @@ export const AuthProvider = ({ children }) => {
 
   // Logout Handler
   const logoutUser = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     delete axios.defaults.headers.common['Authorization'];
     setUser(null);
     console.log('Session terminated. Logged out.');
